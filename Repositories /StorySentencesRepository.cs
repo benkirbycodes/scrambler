@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Data;
+using Dapper;
 using scrambler.Models;
 
 namespace scrambler.Repositories
@@ -19,7 +20,7 @@ namespace scrambler.Repositories
     internal StorySentence GetByIds(int sentenceId, int storyId)
     {
       string sql = "SELECT * FROM storysentences WHERE (sentenceId = @sentenceId AND storyId = @storyId)";
-      return _db.Query<StorySentence>(sql, new { sentenceId, storyId });
+      return _db.QueryFirstOrDefault<StorySentence>(sql, new { sentenceId, storyId });
     }
     internal StorySentence Create(StorySentence newStorySentence)
     {
