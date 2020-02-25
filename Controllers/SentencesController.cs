@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using scrambler.Models;
+using scrambler.Services;
 
 namespace scrambler.Controllers
 {
