@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using scrambler.Models;
+using scrambler.Repositories;
 
 namespace scrambler.Services
 {
