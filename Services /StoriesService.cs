@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using scrambler.Models;
+using scrambler.Repositories;
 
 namespace scrambler.Services
 {
   public class StoriesService
   {
     private readonly StoriesRepository _repo;
-    public StoriesService(StoriesService repo)
+    public StoriesService(StoriesRepository repo)
     {
       _repo = repo;
     }

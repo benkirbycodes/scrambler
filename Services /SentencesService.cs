@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using scrambler.Models;
+using scrambler.Repositories;
 
 namespace scrambler.Services
 {
@@ -20,20 +21,12 @@ namespace scrambler.Services
     {
       var exists = _repo.GetById(id);
       if (exists == null) { throw new Exception("Invalid Id"); }
-      _repo.Edit(exists);
       return exists;
     }
     internal Sentence Create(Sentence newSentence)
     {
       _repo.Create(newSentence);
       return newSentence;
-    }
-    internal Sentence Edit(Sentence update)
-    {
-      var exists = _repo.GetById(update.Id);
-      if (exists == null) { throw new Exception("Invalid Id"); }
-      _repo.Edit(update);
-      return update;
     }
     internal string Delete(int id)
     {
