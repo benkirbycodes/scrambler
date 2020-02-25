@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using scrambler.Models;
+using scrambler.Services;
 
 namespace scrambler.Controllers
 {
@@ -12,12 +13,10 @@ namespace scrambler.Controllers
   public class StorySentencesController : ControllerBase
   {
     private readonly StorySentencesService _stses;
-    private readonly SentencesService _ses;
 
-    public StorySentencesController(StorySentencesService stses, SentencesService ses)
+    public StorySentencesController(StorySentencesService stses)
     {
       _stses = stses;
-      _ses = ses;
     }
     [HttpGet("{id}/sentences")]
     [Authorize]
@@ -26,7 +25,7 @@ namespace scrambler.Controllers
       try
       {
         var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        return Ok(_stses.GetByVaultId(id, userId));
+        return Ok(_stses.GetByStoryId(id, userId));
       }
       catch (Exception e)
       {
