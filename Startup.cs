@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
+using scrambler.Repositories;
+using scrambler.Services;
 
 namespace scrambler
 {
@@ -58,7 +62,7 @@ namespace scrambler
       services.AddTransient<StoriesService>();
       services.AddTransient<StorySentencesService>();
       services.AddTransient<SentencesRepository>();
-      services.AddTransient<StoryRepository>();
+      services.AddTransient<StoriesRepository>();
       services.AddTransient<StorySentencesRepository>();
 
 
