@@ -2,21 +2,10 @@ import Vue from "vue";
 // @ts-ignore
 import Vuex from "vuex";
 // @ts-ignore
-import Axios from "axios";
-// @ts-ignore
-import router from "./router";
+import router from "../router";
+import { api } from "./api";
 
 Vue.use(Vuex);
-
-let baseUrl = location.host.includes("localhost")
-  ? "https://localhost:5001/"
-  : "/";
-
-let api = Axios.create({
-  baseURL: baseUrl + "api/",
-  timeout: 3000,
-  withCredentials: true
-});
 
 export default new Vuex.Store({
   state: {

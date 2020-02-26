@@ -1,7 +1,8 @@
 import Vue from "vue";
+// @ts-ignore
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "./store/store";
 import { Auth0Plugin, onAuth } from "@bcwdev/auth0-vue";
 import { domain, clientId, audience } from "./authConfig";
 
