@@ -14,7 +14,7 @@ namespace scrambler.Repositories
     }
     internal IEnumerable<Story> Get()
     {
-      string sql = @"SELECT @ FROM stories";
+      string sql = @"SELECT * FROM stories";
       return _db.Query<Story>(sql);
     }
     internal Story GetById(int id)
@@ -36,7 +36,7 @@ namespace scrambler.Repositories
     }
     internal void Delete(int id)
     {
-      string sql = "DELETE FROM keeps WHERE id = @id";
+      string sql = "DELETE FROM stories WHERE id = @id";
       _db.Execute(sql, new { id });
     }
   }

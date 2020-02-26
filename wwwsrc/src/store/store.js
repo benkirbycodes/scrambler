@@ -9,9 +9,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    publicKeeps: []
+    sentences: [],
+    stories: [],
+    activeStory: {}
   },
-  mutations: {},
+  mutations: {
+    setResource(state, payload) {
+      state[payload.resource] = payload.data;
+    }
+  },
   actions: {
     setBearer({}, bearer) {
       api.defaults.headers.authorization = bearer;

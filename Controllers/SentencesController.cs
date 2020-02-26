@@ -58,7 +58,7 @@ namespace scrambler.Controllers
       }
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     [Authorize]
     public ActionResult<String> Delete(int id)
     {

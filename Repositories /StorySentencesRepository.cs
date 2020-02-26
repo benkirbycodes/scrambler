@@ -14,7 +14,7 @@ namespace scrambler.Repositories
     }
     internal IEnumerable<Sentence> GetByStoryId(int storyId, string userId)
     {
-      string sql = "SELECT s.* FROM storysentences ss INNER JOIN sentences s ON s.id = ss.sentenceId WHERE (storyId = @storyId AND ss.userId = @userId;";
+      string sql = "SELECT s.* FROM storysentences ss INNER JOIN sentences s ON s.id = ss.sentenceId WHERE (storyId = @storyId AND ss.userId = @userId);";
       return _db.Query<Sentence>(sql, new { storyId, userId });
     }
     internal StorySentence GetByIds(int sentenceId, int storyId)
@@ -24,7 +24,7 @@ namespace scrambler.Repositories
     }
     internal StorySentence Create(StorySentence newStorySentence)
     {
-      string sql = @"REPLACE INTO storysentences (sentenceId, storyId, userId) VALUES (@VaultId, @KeepId, @UserId); SELECT LAST_INSERT_ID();";
+      string sql = @"REPLACE INTO storysentences (sentenceId, storyId, userId) VALUES (@SentenceId, @StoryId, @UserId); SELECT LAST_INSERT_ID();";
       int id = _db.ExecuteScalar<int>(sql, newStorySentence);
       newStorySentence.Id = id;
       return newStorySentence;
