@@ -1,34 +1,40 @@
 USE scrambler;
 
-CREATE TABLE sentences (
-  id int NOT NULL AUTO_INCREMENT,
-  text VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id)
-);
+-- SHOW databases;
 
-CREATE TABLE stories (
-  id int NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL, 
-  userId VARCHAR(255),
-  INDEX userId (userId),
-  PRIMARY KEY (id)
-);
+-- CREATE TABLE sentences (
+--   id int NOT NULL AUTO_INCREMENT,
+--   text VARCHAR(255) NOT NULL,
+--   PRIMARY KEY (id)
+-- );
 
-CREATE TABLE storysentences (
-  id int NOT NULL AUTO_INCREMENT,
-  sentenceId int NOT NULL,
-  storyId int NOT NULL,
-  userId VARCHAR(255) NOT NULL,
+-- CREATE TABLE stories (
+--   id int NOT NULL AUTO_INCREMENT,
+--   title VARCHAR(255) NOT NULL, 
+--   userId VARCHAR(255),
+--   INDEX userId (userId),
+--   PRIMARY KEY (id)
+-- );
 
-  PRIMARY KEY (id),
-  INDEX (sentenceId, storyId),
-  INDEX (userId),
+-- CREATE TABLE storysentences (
+--   id int NOT NULL AUTO_INCREMENT,
+--   sentenceId int NOT NULL,
+--   storyId int NOT NULL,
+--   userId VARCHAR(255) NOT NULL,
 
-  FOREIGN KEY (sentenceId)
-    REFERENCES sentence(id)
-    ON DELETE CASCADE,
+--   PRIMARY KEY (id),
+--   INDEX (sentenceId, storyId),
+--   INDEX (userId),
 
-    FOREIGN KEY (storyId)
-    REFERENCES story(id)
-    ON DELETE CASCADE
-);
+--   FOREIGN KEY (sentenceId)
+--     REFERENCES sentences(id)
+--     ON DELETE CASCADE,
+
+--     FOREIGN KEY (storyId)
+--     REFERENCES stories(id)
+--     ON DELETE CASCADE
+-- );
+
+-- DROP TABLE IF EXISTS sentences;
+-- DROP TABLE IF EXISTS stories;
+-- DROP TABLE IF EXISTS storysentences;
