@@ -2,12 +2,14 @@ USE scrambler;
 
 -- SHOW databases;
 
+-- DROP TABLE IF EXISTS sentences;
 -- CREATE TABLE sentences (
 --   id int NOT NULL AUTO_INCREMENT,
 --   text VARCHAR(255) NOT NULL,
 --   PRIMARY KEY (id)
 -- );
 
+-- DROP TABLE IF EXISTS stories;
 -- CREATE TABLE stories (
 --   id int NOT NULL AUTO_INCREMENT,
 --   title VARCHAR(255) NOT NULL, 
@@ -16,11 +18,13 @@ USE scrambler;
 --   PRIMARY KEY (id)
 -- );
 
+-- DROP TABLE IF EXISTS storysentences;
 -- CREATE TABLE storysentences (
 --   id int NOT NULL AUTO_INCREMENT,
 --   sentenceId int NOT NULL,
 --   storyId int NOT NULL,
 --   userId VARCHAR(255) NOT NULL,
+--   order int NOT NULL,
 
 --   PRIMARY KEY (id),
 --   INDEX (sentenceId, storyId),
@@ -35,6 +39,3 @@ USE scrambler;
 --     ON DELETE CASCADE
 -- );
 
--- DROP TABLE IF EXISTS sentences;
--- DROP TABLE IF EXISTS stories;
--- DROP TABLE IF EXISTS storysentences;
