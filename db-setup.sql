@@ -24,7 +24,7 @@ USE scrambler;
 --   sentenceId int NOT NULL,
 --   storyId int NOT NULL,
 --   userId VARCHAR(255) NOT NULL,
---   order int NOT NULL,
+--   sentenceOrder int NOT NULL,
 
 --   PRIMARY KEY (id),
 --   INDEX (sentenceId, storyId),
@@ -34,7 +34,7 @@ USE scrambler;
 --     REFERENCES sentences(id)
 --     ON DELETE CASCADE,
 
---     FOREIGN KEY (storyId)
+--   FOREIGN KEY (storyId)
 --     REFERENCES stories(id)
 --     ON DELETE CASCADE
 -- );
