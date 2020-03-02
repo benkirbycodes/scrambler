@@ -29,14 +29,14 @@ namespace scrambler.Repositories
     }
     internal StorySentence Create(StorySentence newStorySentence)
     {
-      string sql = @"REPLACE INTO storysentences (sentenceId, storyId, sentenceOrder, userId) VALUES (@SentenceId, @StoryId, @SentenceOrder, @UserId); SELECT LAST_INSERT_ID();";
+      string sql = @"INSERT INTO storysentences (sentenceId, storyId, sentenceOrder, userId) VALUES (@SentenceId, @StoryId, @SentenceOrder, @UserId); SELECT LAST_INSERT_ID();";
       int id = _db.ExecuteScalar<int>(sql, newStorySentence);
       newStorySentence.Id = id;
       return newStorySentence;
     }
     internal void Edit(StorySentence update)
     {
-      string sql = @"UPDATE storysentences SET storyId = @StoryId, sentenceId = @SentenceId, id = @Id, sentenceOrder = @SentenceOrder;";
+      string sql = @"UPDATE storysentences SET storyId = @StoryId, sentenceId = @SentenceId, id = @Id, sentenceOrder = @SentenceOrder WHERE id = @id;";
       _db.Execute(sql, update);
 
     }
