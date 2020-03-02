@@ -48,6 +48,23 @@ namespace scrambler.Controllers
       }
 
     }
+    [HttpPut("{id}")]
+    [Authorize]
+    public ActionResult<StorySentence> Edit([FromBody] StorySentence update, int id)
+    {
+      try
+      {
+        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        update.Id = id;
+        return Ok(_stses.Edit(update));
+      }
+      catch (System.Exception)
+      {
+
+        throw;
+      }
+    }
+
     [HttpDelete("{storyId}/sentences/{sentenceId}")]
     [Authorize]
     public ActionResult<String> Delete(int sentenceId, int storyId)

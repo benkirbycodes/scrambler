@@ -23,6 +23,13 @@ namespace scrambler.Services
       _repo.Create(newStorySentence);
       return newStorySentence;
     }
+    internal StorySentence Edit(StorySentence update)
+    {
+      var exists = _repo.GetById(update.Id);
+      if (exists == null) { throw new Exception("Invalid Id"); }
+      _repo.Edit(update);
+      return update;
+    }
 
     internal string Delete(int sentenceId, int storyId)
     {
