@@ -6,6 +6,6 @@ namespace scrambler.Models
     public int SentenceId { get; set; }
     public int Id { get; set; }
     public string UserId { get; set; }
-    public int Order { get; set; }
+    public int SentenceOrder { get; set; }
   }
 }
