@@ -17,7 +17,8 @@ export default new Vuex.Store({
   state: {
     sentences: [],
     stories: [],
-    activeStory: {}
+    activeStory: {},
+    storySentences: []
   },
   mutations: {
     setResource(state, payload) {

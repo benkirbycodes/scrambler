@@ -1,6 +1,8 @@
 <template>
-  <div class="sentence">
-    <div v-for="sentence in sentences" :key="sentence.id">{{sentence.text}}</div>
+  <div class="sentence bg-info">
+    <div v-for="sentence in sentences" :key="sentence.id">
+      {{ sentence.text }}
+    </div>
   </div>
 </template>
 
@@ -19,4 +21,7 @@ export default {
 </script>
 
 <style>
+.sentence {
+  height: 50vh;
+}
 </style>

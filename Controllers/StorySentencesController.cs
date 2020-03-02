@@ -58,10 +58,9 @@ namespace scrambler.Controllers
         update.Id = id;
         return Ok(_stses.Edit(update));
       }
-      catch (System.Exception)
+      catch (Exception e)
       {
-
-        throw;
+        return BadRequest(e.Message);
       }
     }
 
