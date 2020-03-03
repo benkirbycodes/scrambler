@@ -24,7 +24,6 @@ namespace scrambler.Controllers
     {
       try
       {
-        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         return Ok(_sts.Get());
       }
       catch (Exception e)
@@ -37,7 +36,6 @@ namespace scrambler.Controllers
     {
       try
       {
-        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         return Ok(_sts.GetById(id));
       }
       catch (Exception e)
@@ -50,8 +48,7 @@ namespace scrambler.Controllers
     {
       try
       {
-        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        newStory.UserId = userId;
+
         return Ok(_sts.Create(newStory));
       }
       catch (Exception e)
@@ -64,8 +61,7 @@ namespace scrambler.Controllers
     {
       try
       {
-        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        update.Id = id;
+
         return Ok(_sts.Edit(update));
       }
       catch (Exception e)
@@ -80,7 +76,6 @@ namespace scrambler.Controllers
     {
       try
       {
-        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         return Ok(_sts.Delete(id));
       }
       catch (Exception e)
