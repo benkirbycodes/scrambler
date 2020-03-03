@@ -13,8 +13,7 @@ USE scrambler;
 -- CREATE TABLE stories (
 --   id int NOT NULL AUTO_INCREMENT,
 --   title VARCHAR(255) NOT NULL, 
---   userId VARCHAR(255),
---   INDEX userId (userId),
+--   INDEX id (id),
 --   PRIMARY KEY (id)
 -- );
 
@@ -23,12 +22,11 @@ USE scrambler;
 --   id int NOT NULL AUTO_INCREMENT,
 --   sentenceId int NOT NULL,
 --   storyId int NOT NULL,
---   userId VARCHAR(255) NOT NULL,
 --   sentenceOrder int NOT NULL,
 
 --   PRIMARY KEY (id),
 --   INDEX (sentenceId, storyId),
---   INDEX (userId),
+--   INDEX (id),
 
 --   FOREIGN KEY (sentenceId)
 --     REFERENCES sentences(id)
