@@ -24,7 +24,7 @@ namespace scrambler.Repositories
     }
     internal Story Create(Story newStory)
     {
-      string sql = "INSERT INTO stories (title, userId) VALUES (@Title, @UserId); SELECT LAST_INSERT_ID();";
+      string sql = "INSERT INTO stories (title) VALUES (@Title); SELECT LAST_INSERT_ID();";
       int id = _db.ExecuteScalar<int>(sql, newStory);
       newStory.Id = id;
       return newStory;

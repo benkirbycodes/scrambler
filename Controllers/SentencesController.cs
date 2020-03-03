@@ -43,7 +43,6 @@ namespace scrambler.Controllers
       }
     }
     [HttpPost]
-    [Authorize]
     public ActionResult<Sentence> Create([FromBody] Sentence newSentence)
     {
       try
@@ -59,7 +58,6 @@ namespace scrambler.Controllers
     }
 
     [HttpDelete("{id}")]
-    [Authorize]
     public ActionResult<String> Delete(int id)
     {
       try

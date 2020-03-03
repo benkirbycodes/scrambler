@@ -12,10 +12,10 @@ namespace scrambler.Repositories
     {
       _db = db;
     }
-    internal IEnumerable<Sentence> GetByStoryId(int storyId, string userId)
+    internal IEnumerable<Sentence> GetByStoryId(int storyId)
     {
-      string sql = "SELECT s.* FROM storysentences ss INNER JOIN sentences s ON s.id = ss.sentenceId WHERE (storyId = @storyId AND ss.userId = @userId);";
-      return _db.Query<Sentence>(sql, new { storyId, userId });
+      string sql = "SELECT s.* FROM storysentences ss INNER JOIN sentences s ON s.id = ss.sentenceId WHERE (storyId = @storyId);";
+      return _db.Query<Sentence>(sql, new { storyId });
     }
     internal StorySentence GetById(int id)
     {
@@ -29,7 +29,7 @@ namespace scrambler.Repositories
     }
     internal StorySentence Create(StorySentence newStorySentence)
     {
-      string sql = @"INSERT INTO storysentences (sentenceId, storyId, sentenceOrder, userId) VALUES (@SentenceId, @StoryId, @SentenceOrder, @UserId); SELECT LAST_INSERT_ID();";
+      string sql = @"INSERT INTO storysentences (sentenceId, storyId, sentenceOrder) VALUES (@SentenceId, @StoryId, @SentenceOrder); SELECT LAST_INSERT_ID();";
       int id = _db.ExecuteScalar<int>(sql, newStorySentence);
       newStorySentence.Id = id;
       return newStorySentence;

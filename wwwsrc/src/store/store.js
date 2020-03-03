@@ -6,17 +6,18 @@ import router from "../router";
 import { api } from "./api";
 import sentencesModule from "./sentencesModule";
 import storiesModule from "./storiesModule";
+import storySentencesModule from "./storySentencesModule";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     sentencesModule,
-    storiesModule
+    storiesModule,
+    storySentencesModule
   },
   state: {
     sentences: [],
-    stories: [],
     activeStory: {},
     storySentences: []
   },
@@ -25,12 +26,5 @@ export default new Vuex.Store({
       state[payload.resource] = payload.data;
     }
   },
-  actions: {
-    setBearer({}, bearer) {
-      api.defaults.headers.authorization = bearer;
-    },
-    resetBearer() {
-      api.defaults.headers.authorization = "";
-    }
-  }
+  actions: {}
 });
