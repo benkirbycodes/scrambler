@@ -1,12 +1,19 @@
 <template>
-  <div class="sentence bg-info">
-    <div v-for="sentence in sentences" :key="sentence.id">
+  <div class="sentence">
+    <drag
+      class="badge p-1 badge-pill badge-primary drag"
+      v-for="sentence in sentences"
+      :key="sentence.id"
+      :transfer-data="sentence"
+    >
       {{ sentence.text }}
-    </div>
+    </drag>
   </div>
 </template>
 
 <script>
+import { Drag, Drop } from "vue-drag-drop";
+
 export default {
   mounted() {
     this.$store.dispatch("getSentences");
@@ -16,6 +23,11 @@ export default {
     sentences() {
       return this.$store.state.sentences;
     }
+  },
+  methods: {},
+  components: {
+    Drag,
+    Drop
   }
 };
 </script>
@@ -23,5 +35,6 @@ export default {
 <style>
 .sentence {
   height: 50vh;
+  border: 1px solid black;
 }
 </style>
