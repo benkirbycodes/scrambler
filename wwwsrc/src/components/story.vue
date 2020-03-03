@@ -1,6 +1,6 @@
 <template>
-  <div class="story bg-dark">
-    <div v-for="storySentnce in storySentnces" :key="storySentnce.Id">
+  <div class="story bg-light">
+    <div v-for="storySentence in storySentences" :key="storySentence.Id">
       <p>{{ storySentence.Text }}</p>
     </div>
   </div>
@@ -9,12 +9,13 @@
 <script>
 export default {
   mounted() {
-    this.$store.dispatch("getStoryById");
+    this.$store.dispatch("getStoryById", 1);
+    this.$store.dispatch("getSentencesByStoryId", 1);
   },
   name: "story",
   computed: {
-    storySentnces() {
-      return this.$store.state.storySentnces;
+    storySentences() {
+      return this.$store.state.storySentences;
     }
   }
 };

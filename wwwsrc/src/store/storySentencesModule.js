@@ -5,7 +5,8 @@ export default {
     async getSentencesByStoryId({ commit, dispatch }, id) {
       try {
         let res = await api.get("storysentences/" + id + "/sentences");
-        commit("SetResource", { resource: "storySentences", data: res.data });
+        commit("setResource", { resource: "storySentences", data: res.data });
+        console.log(res.data);
       } catch (error) {
         console.error(error);
       }

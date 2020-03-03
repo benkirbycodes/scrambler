@@ -20,7 +20,6 @@ namespace scrambler.Controllers
       _sts = sts;
     }
     [HttpGet]
-    [Authorize]
     public ActionResult<IEnumerable<Story>> Get()
     {
       try
@@ -34,7 +33,6 @@ namespace scrambler.Controllers
       }
     }
     [HttpGet("{id}")]
-    [Authorize]
     public ActionResult<Story> GetById(int id)
     {
       try
@@ -48,7 +46,6 @@ namespace scrambler.Controllers
       }
     }
     [HttpPost]
-    [Authorize]
     public ActionResult<Story> Create([FromBody] Story newStory)
     {
       try
@@ -63,7 +60,6 @@ namespace scrambler.Controllers
       }
     }
     [HttpPut("{id}")]
-    [Authorize]
     public ActionResult<Story> Edit([FromBody] Story update, int id)
     {
       try
@@ -80,7 +76,6 @@ namespace scrambler.Controllers
 
 
     [HttpDelete("{id}")]
-    [Authorize]
     public ActionResult<String> Delete(int id)
     {
       try

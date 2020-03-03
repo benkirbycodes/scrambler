@@ -12,9 +12,9 @@ namespace scrambler.Services
     {
       _repo = repo;
     }
-    internal IEnumerable<Sentence> GetByStoryId(int id, string userId)
+    internal IEnumerable<Sentence> GetByStoryId(int id)
     {
-      var exists = _repo.GetByStoryId(id, userId);
+      var exists = _repo.GetByStoryId(id);
       if (exists == null) { throw new Exception("Invalid Id"); }
       return exists;
     }
