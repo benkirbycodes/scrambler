@@ -2,14 +2,6 @@ import { api } from "./api";
 
 export default {
   actions: {
-    async getStories({ commit, dispatch }) {
-      try {
-        let res = await api.get("stories");
-        commit("setResource", { resource: "stories", data: res.data });
-      } catch (error) {
-        console.error(error);
-      }
-    },
     async getStoryById({ commit, dispatch }, id) {
       try {
         let res = await api.get("stories/" + id);

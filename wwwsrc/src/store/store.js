@@ -18,7 +18,6 @@ export default new Vuex.Store({
   },
   state: {
     sentences: [],
-    stories: [],
     activeStory: {},
     storySentences: []
   },

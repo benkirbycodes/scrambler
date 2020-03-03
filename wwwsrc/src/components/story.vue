@@ -8,10 +8,7 @@
 
 <script>
 export default {
-  mounted() {
-    this.$store.dispatch("getStoryById", 1);
-    this.$store.dispatch("getSentencesByStoryId", 1);
-  },
+  mounted() {},
   name: "story",
   computed: {
     storySentences() {
