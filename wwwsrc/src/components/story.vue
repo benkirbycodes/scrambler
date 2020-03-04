@@ -1,8 +1,6 @@
 <template>
   <drop class="story bg-light drop" @drop="handleDrop">
-    <p v-for="storySentence in storySentences" :key="storySentence.id">
-      <span>{{ storySentence.text }}</span>
-    </p>
+    <p>{{ concatSentence }}</p>
   </drop>
 </template>
 
@@ -13,13 +11,15 @@ export default {
   mounted() {},
   name: "story",
   computed: {
-    storySentences() {
-      return this.$store.state.storySentences;
+    concatSentence() {
+      return this.$store.state.concatSentence;
+      console.log(this.$store.state.concatSentence);
     }
   },
   methods: {
     handleDrop(data) {
       this.$store.state.storySentences.push(data);
+      this.$store.dispatch("concatStorySentences");
     }
   },
   components: {
