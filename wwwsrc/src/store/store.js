@@ -36,6 +36,15 @@ export default new Vuex.Store({
       }
       console.log(concat);
       commit("setResource", { resource: "concatSentence", data: concat });
+    },
+    randomizeSentences({ commit, dispatch }) {
+      let array = this.state.storySentences;
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      commit("setResource", { resource: "storySentences", data: array });
+      dispatch("concatStorySentences");
     }
   }
 });
