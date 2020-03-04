@@ -12,8 +12,8 @@ export default {
     },
     async createStory({ commit, dispatch }, story) {
       try {
-        let res = await api.post("stories");
-        dispatch("getStories");
+        let res = await api.post("stories", story);
+        dispatch("getStoryById", res.data.id);
       } catch (error) {
         console.error(error);
       }

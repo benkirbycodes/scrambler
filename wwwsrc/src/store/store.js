@@ -32,11 +32,10 @@ export default new Vuex.Store({
       let concat = "";
       for (let i = 0; i < this.state.storySentences.length; i++) {
         concat += this.state.storySentences[i].text;
-        console.log(this.state.storySentences[i].text);
       }
-      console.log(concat);
       commit("setResource", { resource: "concatSentence", data: concat });
     },
+    //Fisher-Yates shuffle
     randomizeSentences({ commit, dispatch }) {
       let array = this.state.storySentences;
       for (let i = array.length - 1; i > 0; i--) {
