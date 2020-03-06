@@ -34,7 +34,10 @@
       </form>
     </modal>
     <modal id="two">
-      <div slot="title">Choose A Previous Story</div>Choose A Previous Story
+      <div slot="title">Choose A Previous Story</div>
+      <div @click="setActiveStory(story.id)" slot="body" v-for="story in stories" :key="story.id">
+        <a>{{story.title}}</a>
+      </div>
     </modal>
   </div>
 </template>
@@ -45,6 +48,9 @@ import sentence from "@/components/sentence.vue";
 import modal from "@/components/modal.vue";
 
 export default {
+  mounted() {
+    this.$store.dispatch("getStories");
+  },
   data() {
     return {
       newStory: {
@@ -64,15 +70,18 @@ export default {
   methods: {
     scramble() {
       this.$store.dispatch("randomizeSentences");
+    },
+    createStory() {
+      let story = { ...this.newStory };
+      this.$store.dispatch("createStory", story);
+      this.newStory = {
+        title: ""
+      };
+      $("#one").modal("hide");
+    },
+    setActiveStory(id) {
+      this.$store.dispatch("getStoryById", id);
     }
-  },
-  createStory() {
-    let story = { ...this.newStory };
-    this.$store.dispatch("createStory", story);
-    this.newStory = {
-      title: ""
-    };
-    $("#one").modal("hide");
   },
   components: {
     story,
