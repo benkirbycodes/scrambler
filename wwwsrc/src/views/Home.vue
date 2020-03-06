@@ -81,6 +81,7 @@ export default {
     },
     setActiveStory(id) {
       this.$store.dispatch("getStoryById", id);
+      this.$store.dispatch("getSentencesByStoryId", id);
     }
   },
   components: {

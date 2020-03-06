@@ -6,6 +6,7 @@ export default {
       try {
         let res = await api.get("storysentences/" + id + "/sentences");
         commit("setResource", { resource: "storySentences", data: res.data });
+        dispatch("concatStorySentences");
         console.log(res.data);
       } catch (error) {
         console.error(error);
