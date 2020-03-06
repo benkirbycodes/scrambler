@@ -2,24 +2,23 @@
   <div class="home container-fluid">
     <div class="row">
       <div class="col-6 p-5">
-        <button
-          v-if="activeStory.title"
-          @click="scramble"
-          class="btn btn-outline-dark"
-        >
-          Scramble!
-        </button>
+        <button v-if="activeStory.title" @click="scramble" class="btn btn-outline-dark">Scramble!</button>
         <button
           data-toggle="modal"
           data-target="#one"
           v-else
           class="btn btn-outline-dark text-center"
-        >
-          Start a New Story
-        </button>
+        >Start a New Story</button>
+        <button
+          data-toggle="modal"
+          data-target="#two"
+          class="btn btn-outline-dark text-center"
+        >Load A Story</button>
       </div>
 
-      <div class="col-6 p-5"><h1>ScRaMbLeR</h1></div>
+      <div class="col-6 p-5">
+        <h1>ScRaMbLeR</h1>
+      </div>
       <div class="col-12">
         <story v-if="activeStory.title" />
       </div>
@@ -27,7 +26,16 @@
         <sentence v-if="activeStory.title" />
       </div>
     </div>
-    <modal id="one" />
+    <modal id="one">
+      <div slot="title">What Is The Title Of Your New Story?</div>
+      <form @submit.prevent="createStory" slot="body">
+        <input v-model="newStory.title" type="text" />
+        <button class="btn btn-outline-dark">Make it!</button>
+      </form>
+    </modal>
+    <modal id="two">
+      <div slot="title">Choose A Previous Story</div>Choose A Previous Story
+    </modal>
   </div>
 </template>
 
@@ -37,16 +45,34 @@ import sentence from "@/components/sentence.vue";
 import modal from "@/components/modal.vue";
 
 export default {
+  data() {
+    return {
+      newStory: {
+        title: ""
+      }
+    };
+  },
   name: "home",
   computed: {
     activeStory() {
       return this.$store.state.activeStory;
+    },
+    stories() {
+      return this.$store.state.stories;
     }
   },
   methods: {
     scramble() {
       this.$store.dispatch("randomizeSentences");
     }
+  },
+  createStory() {
+    let story = { ...this.newStory };
+    this.$store.dispatch("createStory", story);
+    this.newStory = {
+      title: ""
+    };
+    $("#one").modal("hide");
   },
   components: {
     story,

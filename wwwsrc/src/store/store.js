@@ -20,7 +20,8 @@ export default new Vuex.Store({
     sentences: [],
     activeStory: {},
     storySentences: [],
-    concatSentence: ""
+    concatSentence: "",
+    stories: []
   },
   mutations: {
     setResource(state, payload) {
