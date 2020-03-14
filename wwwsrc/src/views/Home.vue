@@ -1,23 +1,23 @@
 <template>
-  <div class="home container-fluid">
+  <div class="home bg-dark container-fluid">
     <div class="row">
       <div class="col-6 p-5">
-        <button v-if="activeStory.title" @click="scramble" class="btn btn-outline-dark">Scramble!</button>
+        <button v-if="activeStory.title" @click="scramble" class="btn btn-outline-light">Scramble!</button>
         <button
           data-toggle="modal"
           data-target="#one"
           v-else
-          class="btn btn-outline-dark text-center"
+          class="btn btn-outline-light text-center"
         >Start a New Story</button>
         <button
           data-toggle="modal"
           data-target="#two"
-          class="btn btn-outline-dark text-center"
+          class="btn btn-outline-light text-center"
         >Load A Story</button>
       </div>
 
       <div class="col-6 p-5">
-        <h1>ScRaMbLeR</h1>
+        <h1 class="text-white">ScRaMbLeR</h1>
       </div>
       <div class="col-12">
         <story v-if="activeStory.title" />
@@ -30,7 +30,7 @@
       <div slot="title">What Is The Title Of Your New Story?</div>
       <form @submit.prevent="createStory" slot="body">
         <input v-model="newStory.title" type="text" />
-        <button class="btn btn-outline-dark">Make it!</button>
+        <button class="btn btn-outline-light">Make it!</button>
       </form>
     </modal>
     <modal id="two">
@@ -92,4 +92,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.home {
+  height: 100%;
+  width: 100%;
+}
+</style>

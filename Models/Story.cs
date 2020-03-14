@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace scrambler.Models
 {
   public class Story

@@ -1,5 +1,5 @@
 <template>
-  <drop class="story bg-light drop" @drop="handleDrop">
+  <drop class="story bg-light drop rounded" @drop="handleDrop">
     <h3 class="text-center">{{ activeStory.title }}</h3>
     <p>{{ concatSentence }}</p>
   </drop>
@@ -47,5 +47,7 @@ export default {
 .story {
   height: 50vh;
   border: 1px solid black;
+  background-image: url("../assets/blank-page.jpg");
+  background-size: cover;
 }
 </style>

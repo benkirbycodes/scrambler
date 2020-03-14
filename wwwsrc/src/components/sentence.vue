@@ -1,13 +1,11 @@
 <template>
-  <div class="sentence">
+  <div class="sentence rounded">
     <drag
-      class="badge p-1 badge-pill badge-primary drag"
+      class="drag"
       v-for="sentence in sentences"
       :key="sentence.id"
       :transfer-data="sentence"
-    >
-      {{ sentence.text }}
-    </drag>
+    >{{ sentence.text }}</drag>
   </div>
 </template>
 
